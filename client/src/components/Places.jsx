@@ -1,4 +1,9 @@
-import React from 'react';
+import mullayanagiri from '../assets/mullayanagiri.jpg';
+import bababudangiri from '../assets/bababudangiri.jpg';
+import hebbeFalls from '../assets/hebbefalls.jpg';
+import golf from '../assets/golf.jpg';
+import bhadra from '../assets/bhadra-wildlife-sanctuary.jpg';
+import jhari from '../assets/jhari.jpg';
 
 const Places = () => {
     const places = [
@@ -6,37 +11,37 @@ const Places = () => {
             title: 'Mullayanagiri Peak',
             distance: '15 km',
             description: 'The highest peak in Karnataka, offering breathtaking views and a scenic trek.',
-            image: 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'
+            image: mullayanagiri
         },
         {
             title: 'Baba Budangiri',
             distance: '20 km',
             description: 'A sacred mountain range famous for its shrine and stunning landscapes.',
-            image: 'https://images.unsplash.com/photo-1624969862293-b749659ccc4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80'
+            image: bababudangiri
         },
         {
             title: 'Hebbe Falls',
             distance: '10 km',
             description: 'A majestic waterfall tucked inside a coffee estate, accessible by jeep.',
-            image: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'
+            image: hebbeFalls
         },
         {
             title: 'Chikmagalur Golf Club',
             distance: '5 km',
             description: 'Lush green golf course set against the backdrop of the Western Ghats.',
-            image: 'https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'
+            image: golf
         },
         {
             title: 'Bhadra Wildlife Sanctuary',
             distance: '35 km',
             description: 'A biodiversity hotspot home to tigers, elephants, and exotic birds.',
-            image: 'https://images.unsplash.com/photo-1518005052304-a373bb6df816?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80'
+            image: bhadra
         },
         {
             title: 'Jhari Waterfalls',
             distance: '22 km',
             description: 'Also known as Buttermilk Falls, a stunning cascade surrounded by dense forests.',
-            image: 'https://images.unsplash.com/photo-1476900164809-ff19b8ae5968?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'
+            image: jhari
         },
     ];
 

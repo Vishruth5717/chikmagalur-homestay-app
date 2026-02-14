@@ -11,6 +11,7 @@ const BookingModal = ({ isOpen, onClose }) => {
     });
     const [selectedRoom, setSelectedRoom] = useState(null);
     const [isProcessing, setIsProcessing] = useState(false);
+    const [guestName, setGuestName] = useState('');
 
     if (!isOpen) return null;
 
@@ -44,17 +45,46 @@ const BookingModal = ({ isOpen, onClose }) => {
         return pricePerNight * nights;
     };
 
-    const handlePayment = () => {
+    const handlePayment = async () => {
+        if (!guestName.trim()) {
+            alert("Please enter your full name to proceed.");
+            return;
+        }
+
         setIsProcessing(true);
-        // Simulate API call
-        setTimeout(() => {
+
+        try {
+            const response = await fetch('http://localhost:5000/api/book', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    guestName: guestName,
+                    room: selectedRoom,
+                    checkIn: searchParams.checkIn,
+                    checkOut: searchParams.checkOut,
+                    adults: searchParams.adults,
+                    children: searchParams.children,
+                    total: calculateTotal()
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                alert(`Booking Confirmed! \nBooking ID: ${data.bookingId}\nRoom: ${selectedRoom.title}\nTotal: ₹${calculateTotal()}`);
+                onClose();
+                setStep(1);
+                setSelectedRoom(null);
+                setGuestName('');
+            } else {
+                const errorData = await response.json();
+                alert(`Booking failed: ${errorData.error || "Unknown error"}`);
+            }
+        } catch (error) {
+            console.error("Error processing booking:", error);
+            alert(`An error occurred while booking: ${error.message}`);
+        } finally {
             setIsProcessing(false);
-            const total = calculateTotal();
-            alert(`Booking Confirmed! \nRoom: ${selectedRoom.title}\nTotal: ₹${total}\n\n(Payment integration will be added shortly)`);
-            onClose();
-            setStep(1);
-            setSelectedRoom(null);
-        }, 2000);
+        }
     };
 
     const rooms = [
@@ -103,7 +133,7 @@ const BookingModal = ({ isOpen, onClose }) => {
     ];
 
     return (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
             <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto relative animate-fadeIn flex flex-col">
 
                 {/* Header */}
@@ -229,6 +259,18 @@ const BookingModal = ({ isOpen, onClose }) => {
                                 </div>
                             </div>
 
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                <input
+                                    type="text"
+                                    value={guestName}
+                                    onChange={(e) => setGuestName(e.target.value)}
+                                    className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary outline-none"
+                                    placeholder="Enter your full name"
+                                    required
+                                />
+                            </div>
+
                             <button
                                 onClick={handlePayment}
                                 disabled={isProcessing}
@@ -244,7 +286,7 @@ const BookingModal = ({ isOpen, onClose }) => {
                     )}
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

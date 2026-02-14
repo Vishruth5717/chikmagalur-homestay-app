@@ -37,7 +37,7 @@ const Footer = () => {
                             </div>
                             <div className="flex items-start space-x-3">
                                 <span className="mt-1 text-accent"><MailIcon /></span>
-                                <p>themellows@gmail.com</p>
+                                <p>vishruthvishruth090@gmail.com</p>
                             </div>
                             <div className="flex items-start space-x-3">
                                 <span className="mt-1 text-accent"><MapPinIcon /></span>

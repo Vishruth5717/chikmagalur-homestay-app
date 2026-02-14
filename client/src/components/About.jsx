@@ -1,5 +1,7 @@
 import React from 'react';
 
+import aboutImage from '../assets/exterior1.jpg';
+
 // SVG Icons
 const CoffeeIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
@@ -30,7 +32,7 @@ const About = () => {
                     <div className="md:w-1/2">
                         <div className="relative rounded-xl overflow-hidden shadow-soft group">
                             <img
-                                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+                                src={aboutImage}
                                 alt="Homestay Exterior"
                                 className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500"
                             />
