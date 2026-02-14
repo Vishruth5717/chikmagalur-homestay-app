@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+@theme {
+  --color-primary: #1A4331;
+  --color-secondary: #5C4033;
+  --color-accent: #C19A6B;
+  --color-background: #FAFAFA;
+  --color-text: #2C3E50;
+
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Lato', sans-serif;
+
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --radius-xl: 12px;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-white font-medium rounded-xl hover:bg-primary/90 transition-all duration-300 shadow-soft;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-secondary text-white font-medium rounded-xl hover:bg-secondary/90 transition-all duration-300 shadow-soft;
+  }
+
+  .btn-accent {
+    @apply px-6 py-3 bg-accent text-white font-medium rounded-xl hover:bg-accent/90 transition-all duration-300 shadow-soft;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-soft overflow-hidden hover:shadow-lg transition-shadow duration-300;
+  }
+}
